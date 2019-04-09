@@ -1,3 +1,3 @@
-MASM hello.asm
-LINK hello
+TOOLS\MASM hello.asm
+TOOLS\LINK hello
 hello
