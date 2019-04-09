@@ -1,5 +1,5 @@
 data segment
-    msg db "Hello world!", "$"
+    msg db "Hello x86 MASM assembly programming!", "$"
 data ends
 
 code segment
