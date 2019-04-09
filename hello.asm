@@ -1,5 +1,5 @@
 data segment
-    msg db "Hello x86 MASM assembly programming!", "$"
+    msg db "Hello BJUT x86 MASM assembly programming!", "$"
 data ends
 
 code segment
@@ -9,12 +9,12 @@ code segment
         mov ax, data
         mov ds, ax
 
-        mov ah, 09h
         lea dx, msg
+        mov ah, 09h
         int 21h
 
     stop:
-        mov ax, 4c00h
+        mov ah, 4ch
         int 21h
 code ends
     end start
