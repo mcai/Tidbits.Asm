@@ -18,6 +18,8 @@ See hello.asm.
 
 ## Workflow
 
+* Visual Studio Code can be used as a MASM editor. (Plugin required.)
+
 1. Install DOSBox.
 
 2. Edit `hello.asm` and `run.sh` as needed.
