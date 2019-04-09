@@ -1,27 +1,29 @@
 # README
 
-## Slides
+BJUT 汇编语言程序设计课程配套项目.
+
+## PPT讲稿
 
 See PPT/.
 
-## Tools
+## 工具
 
 See Tools/.
 
-## Examples
+## 代码示例
 
 See hello.asm.
 
-## References
+## 参考
 
 `https://suiyuanjian.com/117.html`
 
-## Workflow
+## 使用流程
 
-* Visual Studio Code can be used as a MASM editor. (Plugin required.)
+* 可以安装 Visual Studio Code 用来编辑MASM汇编代码 （需要安装MASM插件）.
 
-1. Install DOSBox.
+1. 安装 DOSBox.
 
-2. Edit `hello.asm` and `run.sh` as needed.
+2. 根据需要修改 `hello.asm` 和 `run.sh`.
 
-2. Run `run.sh` from command line.
+2. 从命令行执行 `run.sh`.
