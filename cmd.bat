@@ -1,2 +1,3 @@
-MASM.EXE examples/helloworld.asm
-LINK.EXE examples/helloworld
+MASM hello.asm
+LINK hello
+hello
