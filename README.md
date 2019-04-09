@@ -24,6 +24,6 @@ See hello.asm.
 
 1. 安装 DOSBox.
 
-2. 根据需要修改 `hello.asm` 和 `run.sh`.
+2. 根据需要修改 `hello.asm` 和 `run.sh`（请设置好`run.sh`中的DOSBox路径）.
 
 2. 从命令行执行 `run.sh`.
