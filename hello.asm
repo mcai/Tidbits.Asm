@@ -13,7 +13,7 @@ start:
     mov ax, @data
     mov ds, ax
 
-    ;TODO: PUT YOUR CODE HERE
+    ; TODO: PUT YOUR CODE HERE
 
     ; display the message
     mov ah, 09h
