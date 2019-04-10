@@ -2,7 +2,6 @@
 title YOUR TITLE HERE
 
 .model small
-
 .stack 100h
 
 .data
@@ -15,10 +14,14 @@ start:
     mov ds, ax
 
     ;TODO: PUT YOUR CODE HERE
+
+    ; display the message
     mov ah, 09h
     mov dx, offset msg
     int 21h
 
+    ; terminate program by a normal way
     mov ah, 4ch
     int 21h
+
 end start
