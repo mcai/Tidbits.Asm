@@ -1,20 +1,24 @@
-data segment
-    msg db "Hello BJUT x86 MASM assembly programming!", "$"
-data ends
+; template for masm for DOS (16 bit) programming using simplified segment definition
+title YOUR TITLE HERE
 
-code segment
-    assume cs: code, ds: data
+.model small
 
-    start:
-        mov ax, data
-        mov ds, ax
+.stack 100h
 
-        mov dx, offset msg
-        mov ah, 09h
-        int 21h
+.data
+; TODO: PUT YOUR DATA DEFINITION HERE
+msg db "Hello BJUT x86 MASM assembly programming!", "$"
 
-    stop:
-        mov ah, 4ch
-        int 21h
-code ends
-    end start
+.code
+start:
+    mov ax, @data
+    mov ds, ax
+
+    ;TODO: PUT YOUR CODE HERE
+    mov ah, 09h
+    mov dx, offset msg
+    int 21h
+
+    mov ah, 4ch
+    int 21h
+end start
