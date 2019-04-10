@@ -9,7 +9,7 @@ code segment
         mov ax, data
         mov ds, ax
 
-        lea dx, msg
+        mov dx, offset msg
         mov ah, 09h
         int 21h
 
