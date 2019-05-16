@@ -5,7 +5,7 @@ title Hello
 .stack 100h
 
 .data
-    msg db 'Hello BJUT x86 MASM assembly programming!', '$'
+    promptMessage db 'Hello BJUT x86 MASM assembly programming!', '$'
     inputBuffer db 80, ?, 80 dup(?), '$'
 
 .code
@@ -13,7 +13,7 @@ start:
     mov ax, @data
     mov ds, ax
 
-    lea dx, msg
+    lea dx, promptMessage
     call WriteString
 
     call Crlf
