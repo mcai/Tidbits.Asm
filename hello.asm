@@ -35,17 +35,21 @@ start:
 
     call Terminate
 
+; Read a character from standard input
 ReadChar proc
-    ; TODO
+    mov ah, 01h
+    int 21h
     ret
 ReadChar endp
 
+; Write a character to standard output
 WriteChar proc
     mov ah, 02h
     int 21h
     ret
 WriteChar endp
 
+; Write carry-return line-feed to standard output
 Crlf proc
     mov dl, 13
     call WriteChar
@@ -56,28 +60,33 @@ Crlf proc
     ret
 Crlf endp
 
+; Read an integer from standard input
 ReadInt proc
     ; TODO
     ret
 ReadInt endp
 
+; Write an integer to standard output
 WriteInt proc
     ; TODO
     ret
 WriteInt endp
 
+; Read a string from standard input
 ReadString proc
     mov ah, 0ah
     int 21h
     ret
 ReadString endp
 
+; Write a string to standard output
 WriteString proc
     mov ah, 09h
     int 21h
     ret
 WriteString endp
 
+; Terminate the program
 Terminate proc
     mov ah, 4ch
     int 21h
