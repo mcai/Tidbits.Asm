@@ -1,16 +1,18 @@
-; masm for DOS (16 bit) programming using simplified segment definition
-title Hello
+; masm16
 
-.model small
-.stack 100h
-
-.data
+data segment
     welcomeMessage db 'Hello BJUT x86 MASM assembly programming!', '$' ;welcome message
     inputBuffer db 0ffh, ?, 0ffh dup(?), '$' ;input buffer
+data ends
 
-.code
+stack1 segment para stack
+    db 100h dup(0)
+stack1 ends
+
+code segment
+    assume cs:code, ds:data
 start:
-    mov ax, @data ;init
+    mov ax, data ;init
     mov ds, ax
 
     lea dx, welcomeMessage ;prompt
@@ -38,11 +40,12 @@ start:
 ;    call Crlf ;enter
 ;    pop al ;restore al
     mov dl, al ;move al to dl for writing
-
     call WriteChar ;write a character
 
     call Terminate ;terminate the program
 
 include common.asm
+
+code ends
 
     end start
