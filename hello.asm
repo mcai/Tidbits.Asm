@@ -5,12 +5,12 @@ data segment
     inputBuffer db 0ffh, ?, 0ffh dup(?), '$' ;input buffer
 data ends
 
-stack1 segment para stack
+stack segment para stack
     db 100h dup(0)
-stack1 ends
+stack ends
 
 code segment
-    assume cs:code, ds:data
+    assume cs: code, ds: data, ss: stack
 start:
     mov ax, data ;init
     mov ds, ax
@@ -36,9 +36,9 @@ start:
 
     call ReadChar; read a character
 
-;    push al ;save al
-;    call Crlf ;enter
-;    pop al ;restore al
+    push ax ;save al
+    call Crlf ;enter
+    pop ax ;restore al
     mov dl, al ;move al to dl for writing
     call WriteChar ;write a character
 
