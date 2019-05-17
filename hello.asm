@@ -3,6 +3,10 @@
 data segment
     welcomeMessage db 'Hello BJUT x86 MASM assembly programming!', '$' ;welcome message
     inputBuffer db 0ffh, ?, 0ffh dup(?), '$' ;input buffer
+
+    matrixA db 16 * 8 dup(0)
+    matrixB db 8 * 10 dup(0)
+    matrixC db 16 * 10 dup(?)
 data ends
 
 stack segment para stack
@@ -41,6 +45,20 @@ start:
     pop ax ;restore al
     mov dl, al ;move al to dl for writing
     call WriteChar ;write a character
+
+    lea dx, matrixA
+    call PrintMatrix
+
+    lea dx, matrixB
+    call PrintMatrix
+
+    lea ax, matrixA
+    lea bx, matrixB
+    lea cx, matrixC
+    call MatrixMultiply
+
+    mov dx, cx
+    call PrintMatrix
 
     call Terminate ;terminate the program
 

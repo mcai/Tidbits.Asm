@@ -63,6 +63,18 @@ WriteString proc
     ret
 WriteString endp
 
+; Print matrix from dx
+PrintMatrix proc
+    ; TODO
+    ret
+PrintMatrix endp
+
+; Multiply matrix@ax and matrix@bx, and store result in matrix@cx
+MatrixMultiply proc
+    ; TODO
+    ret
+MatrixMultiply endp
+
 
 ; Terminate the program
 Terminate proc
