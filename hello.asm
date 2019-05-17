@@ -1,46 +1,58 @@
-; template for masm for DOS (16 bit) programming using simplified segment definition
+; masm for DOS (16 bit) programming using simplified segment definition
 title Hello
 
 .model small
 .stack 100h
 
 .data
-    promptMessage db 'Hello BJUT x86 MASM assembly programming!', '$'
-    inputBuffer db 0ffh, ?, 0ffh dup(?), '$'
+    welcomeMessage db 'Hello BJUT x86 MASM assembly programming!', '$' ;welcome message
+    inputBuffer db 0ffh, ?, 0ffh dup(?), '$' ;input buffer
 
 .code
 start:
-    mov ax, @data
+    mov ax, @data ;init
     mov ds, ax
 
-    lea dx, promptMessage
+    lea dx, welcomeMessage ;prompt
     call WriteString
 
-    call Crlf
+    call Crlf ;enter
 
-    lea dx, inputBuffer
+    lea dx, inputBuffer ;read string
     call ReadString
 
-    call Crlf
+    call Crlf ;enter
 
-    lea dx, inputBuffer + 2
+    lea dx, inputBuffer + 2 ;append $ to the end of string
     add dl, [inputBuffer + 1]
     call EndString
 
-    lea dx, inputBuffer + 2
+    lea dx, inputBuffer + 2 ;echo the string
     call WriteString
 
-    call Terminate
+    call Crlf ;enter
+
+    call ReadChar; read a character
+
+;    push al ;save al
+;    call Crlf ;enter
+;    pop al ;restore al
+    mov dl, al ;move al to dl for writing
+
+    call WriteChar ;write a character
+
+    call Terminate ;terminate the program
 
 
 ; Append $ to end of the string
 EndString proc
     mov bx, dx
     mov byte ptr [bx], '$'
+    ret
 EndString endp
 
 
-; Read a character from standard input
+; Read a character from standard input and put in al
 ReadChar proc
     mov ah, 01h
     int 21h
@@ -48,7 +60,7 @@ ReadChar proc
 ReadChar endp
 
 
-; Write a character to standard output
+; Write a character in dl to standard output
 WriteChar proc
     mov ah, 02h
     int 21h
@@ -82,7 +94,7 @@ WriteInt proc
 WriteInt endp
 
 
-; Read a string from standard input
+; Read a string from standard input to dx
 ReadString proc
     mov ah, 0ah
     int 21h
@@ -90,7 +102,7 @@ ReadString proc
 ReadString endp
 
 
-; Write a string to standard output
+; Write a string from dx to standard output
 WriteString proc
     mov ah, 09h
     int 21h
