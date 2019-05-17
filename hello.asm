@@ -6,7 +6,7 @@ title Hello
 
 .data
     promptMessage db 'Hello BJUT x86 MASM assembly programming!', '$'
-    inputBuffer db (100h - 1), ?, (100h - 1) dup(?), '$'
+    inputBuffer db 0ffh, ?, 0ffh dup(?), '$'
 
 .code
 start:
@@ -36,7 +36,7 @@ start:
 ; Append $ to end of the string
 EndString proc
     mov bx, dx
-    mov byte ptr [bxw1], '$'
+    mov byte ptr [bx], '$'
 EndString endp
 
 
@@ -58,10 +58,10 @@ WriteChar endp
 
 ; Write carry-return line-feed to standard output
 Crlf proc
-    mov dl, 13
+    mov dl, 0dh
     call WriteChar
 
-    mov dl, 10
+    mov dl, 0ah
     call WriteChar
 
     ret
