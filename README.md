@@ -18,7 +18,7 @@ See hello.asm.
 
 ## 使用流程
 
-* 可以安装 Visual Studio Code (`https://code.visualstudio.com`) 用来编辑MASM汇编代码 （需要安装MASM插件）.
+* 可以安装 Visual Studio Code (`https://code.visualstudio.com`)等代码编辑器用来编辑MASM汇编代码 （需要安装MASM插件）.
 
 1. 安装 DOSBox(`https://www.dosbox.com`)用以运行16位DOS程序. 
 
