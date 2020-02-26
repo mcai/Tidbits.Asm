@@ -2,6 +2,8 @@
 
 BJUT 汇编语言程序设计课程配套项目.
 
+https://github.com/mcai/Tidbits.Asm
+
 ## 工具
 
 See Tools/.
