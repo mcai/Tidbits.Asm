@@ -2,10 +2,6 @@
 
 BJUT 汇编语言程序设计课程配套项目.
 
-## PPT讲稿
-
-See PPT/.
-
 ## 工具
 
 See Tools/.
@@ -24,6 +20,6 @@ See hello.asm.
 
 1. 安装 DOSBox(`https://www.dosbox.com`)用以运行16位DOS程序. 
 
-2. 根据需要修改 `hello.asm` 和 `run.sh`（请设置好`run.sh`中的DOSBox路径）.
+2. 根据需要修改 `hello.asm` 和 `run.bat`（请设置好`run.bat`中的DOSBox路径）.
 
-3. 从命令行执行 `run.sh`以启动DOSBox，并在DOSBox中编译、链接、执行hello(.asm).
+3. 从命令行执行 `run.bat`以启动DOSBox，并在DOSBox中编译、链接、执行hello(.asm).
