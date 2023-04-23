@@ -1,2 +1,2 @@
 hello;
-exit
+@REM exit
