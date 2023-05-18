@@ -1,2 +1,2 @@
 TOOLS\MASM hello.asm;
-TOOLS\LINK hello
+TOOLS\LINK hello.obj;

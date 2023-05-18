@@ -24,4 +24,4 @@ See hello.asm.
 
 2. 根据需要修改 `hello.asm` 和 `run.bat`（请设置好`run.bat`中的DOSBox路径）.
 
-3. 从命令行执行 `run.bat`以启动DOSBox，并在DOSBox中编译、链接、执行hello(.asm).
+3. 从命令行执行 `dosbox.bat` 以启动DOSBox，并在DOSBox中编译、链接、执行hello(.asm).
