@@ -24,7 +24,7 @@ with open(DOSBOX_CONF, "w") as conf_file:
     conf_file.write(f"{TOOLS_DIR}\\MASM {ASM_FILE};\n")
     conf_file.write(f"{TOOLS_DIR}\\LINK {OBJ_FILE};\n")
     conf_file.write(f"{EXE_FILE}\n")
-    conf_file.write("exit\n")
+    # conf_file.write("exit\n")
 
 # Run DOSBox with the custom configuration
 subprocess.run(["dosbox", "-conf", DOSBOX_CONF])

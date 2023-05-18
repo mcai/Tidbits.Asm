@@ -1,12 +1,5 @@
-; masm16
-
 data segment
-    welcomeMessage db 'Hello BJUT x86 MASM assembly programming!', '$' ;welcome message
-    inputBuffer db 0ffh, ?, 0ffh dup(?), '$' ;input buffer
-
-    matrixA db 16 * 8 dup(0)
-    matrixB db 8 * 10 dup(0)
-    matrixC db 16 * 10 dup(?)
+    welcomeMessage db 'Hello BJUT 80986 MASM assembly programming!', '$' ; 欢迎信息
 data ends
 
 stack segment para stack
@@ -16,54 +9,26 @@ stack ends
 code segment
     assume cs: code, ds: data, ss: stack
 start:
-    mov ax, data ;init
+    mov ax, data ; 初始化
     mov ds, ax
 
-    lea dx, welcomeMessage ;prompt
+    lea dx, welcomeMessage ; 提示
     call WriteString
 
-    call Crlf ;enter
+    call Terminate ; 终止程序
 
-    lea dx, inputBuffer ;read string
-    call ReadString
+; 将 dx 中的字符串写入标准输出
+WriteString proc
+    mov ah, 09h
+    int 21h
+    ret
+WriteString endp
 
-    call Crlf ;enter
-
-    lea dx, inputBuffer + 2 ;append $ to the end of string
-    add dl, [inputBuffer + 1]
-    call EndString
-
-    lea dx, inputBuffer + 2 ;echo the string
-    call WriteString
-
-    call Crlf ;enter
-
-    call ReadChar; read a character
-
-    push ax ;save al
-    call Crlf ;enter
-    pop ax ;restore al
-    mov dl, al ;move al to dl for writing
-    call WriteChar ;write a character
-
-    lea dx, matrixA
-    call PrintMatrix
-
-    lea dx, matrixB
-    call PrintMatrix
-
-    lea ax, matrixA
-    lea bx, matrixB
-    lea cx, matrixC
-    call MatrixMultiply
-
-    mov dx, cx
-    call PrintMatrix
-
-    call Terminate ;terminate the program
-
-include common.asm
+Terminate PROC
+    mov ax, 4C00h         ; DOS 功能 4Ch: 终止程序
+    int 21h               ; 调用 DOS 中断
+    ret
+Terminate ENDP
 
 code ends
-
     end start
