@@ -1,27 +1,27 @@
-# README
+# 自述文件
 
-BJUT 汇编语言程序设计课程配套项目.
+本项目为BJUT汇编语言程序设计课程配套项目。
 
-https://github.com/mcai/Tidbits.Asm
+在安装DosBox和Python后，可以一键运行。
 
-## 工具
-
-See Tools/.
+支持Windows、Linux、MacOS系统。
 
 ## 代码示例
 
-See hello.asm.
+查看 program.asm。
 
-## 参考
+## 参考资料
 
 `https://suiyuanjian.com/117.html`
 
-## 使用流程
+## 使用方法
 
-* 可以安装 Visual Studio Code (`https://code.visualstudio.com`)等代码编辑器用来编辑MASM汇编代码 （需要安装MASM插件）.
+* 可以安装 Visual Studio Code（`https://code.visualstudio.com`）等代码编辑器用来编辑 MASM 汇编代码（需要安装 MASM 插件）。
 
-1. 安装 DOSBox(`https://www.dosbox.com`)用以运行16位DOS程序. 
+1. 安装 DOSBox（`https://www.dosbox.com`）以运行 16 位 DOS 程序。
 
-2. 根据需要修改 `hello.asm` 和 `run.bat`（请设置好`run.bat`中的DOSBox路径）.
+2. 根据需要修改 `program.asm`。
 
-3. 从命令行执行 `dosbox.bat` 以启动DOSBox，并在DOSBox中编译、链接、执行hello(.asm).
+3. 安装 Python（`https://www.python.org`）。
+
+4. 从终端运行 `python run.py <ASM_FILE>`，启动 DOSBox，编译、链接并执行 program.asm 中的汇编代码。
