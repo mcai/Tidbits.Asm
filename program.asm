@@ -1,3 +1,6 @@
+; program.asm
+; 汇编主程序
+
 ; 数据段，存放数据
 data segment
     ; 定义欢迎信息字符串，以 $ 结尾
@@ -30,25 +33,8 @@ start:
     ; 调用 Terminate 过程，终止程序
     call Terminate
 
-; 将 dx 中的字符串写入标准输出
-WriteString proc
-    ; 设置 ah 为 09h，对应 DOS 功能 09h：写字符串至标准输出
-    mov ah, 09h
-    ; 调用 DOS 中断 21h，执行相应功能
-    int 21h
-    ; 返回调用处
-    ret
-WriteString endp
-
-; 终止程序
-Terminate PROC
-    ; 设置 ax 为 4C00h，对应 DOS 功能 4Ch：终止程序
-    mov ax, 4C00h
-    ; 调用 DOS 中断 21h，执行相应功能
-    int 21h
-    ; 返回调用处
-    ret
-Terminate ENDP
+; 在这里包含 common.asm 文件
+include common.asm
 
 ; 结束代码段
 code ends
