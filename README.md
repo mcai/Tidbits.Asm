@@ -26,6 +26,8 @@
 
 4. 从终端运行 `python run.py <ASM_FILE>`，启动 DOSBox，编译、链接并执行 program.asm 中的汇编代码。
 
+## 创建项目
+
 * 使用脚本创建和运行储存于独立文件夹中的项目（适用MacOS/Linux，需提前安装DOSBox）
 
 1. 给予脚本执行权限: `chmod +x ./new.sh ./run.sh`
