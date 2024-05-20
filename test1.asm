@@ -26,8 +26,7 @@ start:
     
     ; Display the prompt message
     lea dx, promptMessage
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintString
     
     ; Prepare buffer for input
     lea dx, inputBuffer
@@ -35,9 +34,7 @@ start:
     int 21h              ; Call DOS interrupt
     
     ; Print a new line
-    lea dx, newline
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintNewline
 
     ; Count the number of words in the input string
     lea si, inputBuffer+2 ; SI points to the start of the input string (skip length byte and unused byte)
@@ -48,28 +45,22 @@ start:
 
     ; Display the word count message
     lea dx, wordCountMessage
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintString
     
     ; Convert the word count to ASCII and display
     mov ax, wordCount    ; Move the word count to AX
-    mov bx, ax           ; Move the word count to BX
-    call PrintNumber     ; Call procedure to print the number
+    call PrintNumber
 
     ; Print a new line
-    lea dx, newline
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintNewline
 
     ; Display the student number message
     lea dx, studentNumberMessage
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintString
 
     ; Display the student number
     mov ax, studentNumber ; Load student number into AX
-    mov bx, ax           ; Move student number to BX
-    call PrintNumber     ; Call procedure to print the student number
+    call PrintNumber
 
     ; Compute i = (student num) % (number of words) + 1
     mov ax, studentNumber ; Load student number into AX
@@ -82,38 +73,45 @@ start:
     mov resultI, dx      ; Store DX into resultI
 
     ; Print a new line
-    lea dx, newline
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintNewline
 
     ; Display the result message
     lea dx, resultMessage
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintString
 
     ; Display the result i
     mov ax, resultI      ; Load resultI into AX
-    mov bx, ax           ; Move result i to BX
-    call PrintNumber     ; Call procedure to print the number
+    call PrintNumber
 
     ; Print a new line
-    lea dx, newline
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintNewline
 
     ; Display the i-th word message
     lea dx, ithWordMessage
-    mov ah, 09h          ; DOS function: Write string to standard output
-    int 21h              ; Call DOS interrupt
+    call PrintString
 
     ; Print the i-th word
     mov cx, resultI      ; Load the value of i into CX
     lea si, inputBuffer+2 ; SI points to the start of the input string (skip length byte and unused byte)
-    call PrintIthWord    ; Call procedure to print the i-th word
+    call PrintIthWord
 
     ; Terminate the program
     mov ah, 4Ch          ; DOS function: Terminate process
     int 21h              ; Call DOS interrupt
+
+; Procedure to print a string
+PrintString proc
+    mov ah, 09h          ; DOS function: Write string to standard output
+    int 21h              ; Call DOS interrupt
+    ret
+PrintString endp
+
+; Procedure to print a new line
+PrintNewline proc
+    lea dx, newline
+    call PrintString
+    ret
+PrintNewline endp
 
 ; Procedure to count the number of words in a string
 CountWords proc
@@ -148,9 +146,8 @@ countWordsEnd:
     ret
 CountWords endp
 
-; Procedure to print a number in BX
+; Procedure to print a number in AX
 PrintNumber proc
-    mov ax, bx           ; Move the number to AX
     xor cx, cx           ; Clear CX (it will be used to store digit count)
     mov bx, 10           ; Base 10
 
